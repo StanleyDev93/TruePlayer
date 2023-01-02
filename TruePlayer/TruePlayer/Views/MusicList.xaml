@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TruePlayer.Views.MusicList"
+             xmlns:cardview="clr-namespace:PanCardView;assembly=PanCardView"
+             xmlns:materialFrame="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+             xmlns:shadows="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
+             xmlns:process="clr-namespace:PanCardView.Processors;assembly=PanCardView"
+             NavigationPage.HasNavigationBar="False">
+    <Grid RowDefinitions="auto,*,180,auto"
+          BackgroundColor="{StaticResource Background}">
+        <StackLayout Orientation="Horizontal"
+                     HeightRequest="20"
+                     Margin="20,20,20,40">
+            <Image Source="bell.png"/>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="CenterAndExpand">
+                <Label Text="Podcast"
+                       TextColor="{StaticResource TextColor}"/>
+                <Image Source="microphone.png"/>
+            </StackLayout>
+
+            <Image Source="search.png"/>
+        </StackLayout>
+        <cardview:CoverFlowView IsCyclical="True"
+                                ItemsSource="{Binding ListMusic}"
+                                Grid.Row="1">
+            <x:Arguments>
+                <process:CoverFlowProcessor ScaleFactor="0.75"/>
+            </x:Arguments>
+            <cardview:CoverFlowView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="10">
+                        <Frame CornerRadius="15"
+                               Padding="0"
+                               HasShadow="False">
+                            <Image Source="{Binding Cover}"
+                                   Aspect="Fill"/>
+                        </Frame>
+                        <Grid VerticalOptions="End"
+                              Margin="10">
+                            <materialFrame:MaterialFrame CornerRadius="15"
+                                                         MaterialBlurStyle="Light"
+                                                         MaterialTheme="AcrylicBlur"/>
+                            <StackLayout Margin="15,0"
+                                         VerticalOptions="Center">
+                                <Label Text="{Binding Song_Name}"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"
+                                                   FontSize="18"/>
+                                <Label Text="{Binding Autor}"
+                                                   TextColor="LightGray"
+                                                   FontAttributes="Bold"
+                                                   FontSize="12"/>
+                            </StackLayout>
+                            <Image Source="play_button.png" 
+                                       Margin="20"
+                                       HeightRequest="40"
+                                       HorizontalOptions="EndAndExpand"/>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </cardview:CoverFlowView.ItemTemplate>
+        </cardview:CoverFlowView>
+        <StackLayout Grid.Row="2">
+            <Label Text="Artistas"
+                   TextColor="{StaticResource TextColor}"
+                   FontAttributes="Bold"
+                   FontSize="25"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="0,0,0,10"/>
+
+            <cardview:CoverFlowView ItemsSource="{Binding ListMusic}"
+                                    PositionShiftValue="170">
+                <cardview:CoverFlowView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="100,0">
+                            <Frame Padding="0"
+                               CornerRadius="15"
+                               HasShadow="False"
+                               Opacity="0.7">
+                                <Image Source="{Binding Cover}"
+                                   Aspect="Fill"/>
+                            </Frame>
+                            <BoxView CornerRadius="15"
+                                 BackgroundColor="red">
+                                <BoxView.Background>
+                                    <LinearGradientBrush StartPoint="1,0">
+                                        <GradientStop Color="Transparent" Offset="0"/>
+                                        <GradientStop Color="{StaticResource Background}" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </BoxView.Background>
+                            </BoxView>
+                            <Label Text="{Binding Autor}"
+                               TextColor="{StaticResource TextColor}"
+                               VerticalOptions="End"
+                               HorizontalOptions="CenterAndExpand"
+                               Margin="20"
+                               FontAttributes="Bold"
+                               FontSize="18"/>
+                        </Grid>
+                    </DataTemplate>
+                </cardview:CoverFlowView.ItemTemplate>
+            </cardview:CoverFlowView>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal"
+                     HeightRequest="25"
+                     Margin="20,10"
+                     Grid.Row="3">
+            <shadows:Shadows CornerRadius="10"
+                             Shades="{shadows:SingleShade Offset='0,0', Opacity= 0.5, Color={StaticResource TextColor}}">
+                <Image Source="musical_note.png"/>
+            </shadows:Shadows>
+
+            <shadows:Shadows CornerRadius="10"
+                             Shades="{shadows:SingleShade Offset='0,0', Opacity= 0.5, Color={StaticResource TextColor}}"
+                             HorizontalOptions="CenterAndExpand">
+                <Image Source="home.png"/>
+            </shadows:Shadows>
+            
+            <shadows:Shadows CornerRadius="10"
+                             Shades="{shadows:SingleShade Offset='0,0', Opacity= 0.5, Color={StaticResource TextColor}}">
+                <Image Source="comment.png"/>
+            </shadows:Shadows>
+        </StackLayout>
+    </Grid>
+</ContentPage>

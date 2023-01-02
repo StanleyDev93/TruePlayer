@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TruePlayer.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="Preferencia">&#xE800;</x:String>
+            <!--Custom Colors-->
+            <Color x:Key="Background">#000</Color>
+            <Color x:Key="TextColor">#FFF</Color>
+            <Color x:Key="Secondary">#177000</Color>
+            <Color x:Key="Reset">#cd6f0e</Color>
+            <Color x:Key="Entry">#E2E2E2</Color>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
